@@ -1,0 +1,7 @@
+@ OK
+# -
+$
+
+@ Cardiaque
+# -
+$ Endurance(-2) Constitution(-1)

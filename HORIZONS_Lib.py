@@ -5,6 +5,21 @@ import Core_Lib as Core
 class HorizonsCharacter(Core.GenericCharacter):
     def __init__(self, name, description, dexterity, constitution, stamina, reflexes, perception, erudition,
                  concentration, ingeniosity, charisma, persuasion, empathy):
+        """
+        :type name: str
+        :type description: str
+        :type dexterity: int
+        :type constitution: int
+        :type stamina: int
+        :type reflexes: int
+        :type perception: int
+        :type erudition: int
+        :type concentration: int
+        :type ingeniosity: int
+        :type charisma: int
+        :type persuasion: int
+        :type empathy: int
+        """
         Core.GenericCharacter.__init__(self, name, description)
 
         self.dexterity = CharAttribute('dexterity', dexterity)
@@ -22,11 +37,12 @@ class HorizonsCharacter(Core.GenericCharacter):
         self.health_gauge = CharGauge(self.constitution, 10)
         self.stamina_gauge = CharGauge(self.stamina, 5)
 
-        self.status = STATUS['OK']
+        self.status = CharStatus('OK', '', [], [])
+        self.ability = CharAbility('Aucune', '')
 
         self.skills = []
         self.stuff = []
-        
+
     def set_attribute(self, attribute, value):
         """
         :type attribute: str
@@ -75,14 +91,11 @@ class HorizonsCharacter(Core.GenericCharacter):
     def restore_stamina(self):
         self.stamina_gauge.replenish()
 
-    def set_status_from_list(self, status):
+    def set_existing_status(self, status):
         """
         :type status: CharStatus
         """
-        if status in STATUS:
-            self.status = status
-        else:
-            raise CharStatusException('Status isnt listed.')
+        self.status = status
 
     def set_status_from_scratch(self, name, description, attribute_list, modificator_list):
         """
@@ -157,6 +170,19 @@ class HorizonsCharacter(Core.GenericCharacter):
         """
         item = self.get_item_by_name(name)
         self.stuff.remove(item)
+
+    def set_existing_ability(self, ability):
+        """
+        :type ability: CharAbility
+        """
+        self.ability = ability
+
+    def set_ability_from_scratch(self, name, description):
+        """
+        :type name: str
+        :type description: str
+        """
+        self.ability = CharAbility(name, description)
 
 
 class CharAttribute:
@@ -263,9 +289,23 @@ class CharStatus:
         self.modificator_list = modificator_list
 
 
-# === STATUS ===========================================================================================================
-# TODO | Complete... #
-STATUS = {'OK': CharStatus('OK', "", [], [])}
+class CharAbility:
+    def __init__(self, name, description):
+        """
+        :type name: str
+        :type description: str
+        """
+        self.name = name
+        self.description = description
+
+
+# === GLOBAL FUNCTIONS =================================================================================================
+def get_ability_list():
+    pass    # TODO #
+
+
+def get_status_list():
+    pass    # TODO #
 
 
 # === EXCEPTIONS =======================================================================================================

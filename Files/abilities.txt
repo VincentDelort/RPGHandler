@@ -1,0 +1,11 @@
+﻿@ Bombe à retardement
+A chaque fois que le PJ doit effectuer un Test, celui-ci a la possibilité de lancer au choix un D4, D6, D8 ou D12 qui offre un bonus supplémentaire à son Test. Ce faisant et en contrepartie, le MJ acquiert la possibilité de faire de même avec la même valeur de dé choisie pour imposer un malus au Joueur sur un prochain Test, au choix du MJ ! Le PJ vivra alors avec une épée de Damoclès au-dessus de la tête … du moins tant qu’il vivra !
+
+@ Chance insolente
+A chaque fois que le PJ effectue un Test et avant d’avoir lancé les dés, celui-ci a la possibilité d’améliorer arbitrairement le résultat : un Echec Critique devient un simple Echec, un Echec se neutralise (dans la mesure du possible) et une Réussite mute en Réussite Critique. Cette altération du résultat sera interprétée scénaristiquement par le MJ avec un élément du hasard (exemple : un volatile qui vient obstruer l’axe de tir d’un ennemi). Toutefois, le Joueur n’a la possibilité de faire ça qu’une seule fois par arc scénaristique (c’est-à-dire entre deux Points Bilan).
+
+@ Blasphème
+A chaque fois que le PJ doit effectuer un Test, le Joueur à la possibilité de défier le MJ dans un duel de dé avant de faire son Test. Le Joueur lance alors un dé de son choix (D4, D6, etc… jusqu'à D20). Suite à quoi, le Joueur tend fébrilement le dé au MJ, qui s’en empare avec autorité et commence à psalmodier quelques incantations obscures sous les yeux terrorisés de sa victime et de ses camarades impuissants avant de lui-même jeter le dé. Le résultat du MJ est retranché au résultat du Joueur, et le total est ajouté sous forme de bonus/malus au Test.
+
+@ Jouer avec le feu
+Lors d’une Action périlleuse, le Joueur peut décider de prendre plus de risques que nécessaire. Cela va se traduire par un bonus de +1 sur son Test, mais également par une augmentation de +2 du seuil d’échec critique ! Le seuil ne peut pas dépasser la Valeur d’Action (ce qui de toute façon n’est pas dans l’intérêt du Joueur…). Il n’est bien évidemment pas possible de « prendre des risques » dans une situation qui n’en nécessite aucun du point du vue du scénario. Cette mécanique fonctionne autant sur les Actions standard (sur 1D6 et ne nécessitant pas de Compétence) que sur les Actions nécessitant des Compétences.
