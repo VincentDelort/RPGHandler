@@ -3,9 +3,9 @@ import Core_Lib as Core
 
 # === CLASSES ==========================================================================================================
 class HorizonsCharacter(Core.GenericCharacter):
-    def __init__(self, name, dexterity, constitution, stamina, reflexes, perception, erudition, concentration,
-                 ingeniosity, charisma, persuasion, empathy):
-        Core.GenericCharacter.__init__(self, name)
+    def __init__(self, name, description, dexterity, constitution, stamina, reflexes, perception, erudition,
+                 concentration, ingeniosity, charisma, persuasion, empathy):
+        Core.GenericCharacter.__init__(self, name, description)
 
         self.dexterity = CharAttribute('dexterity', dexterity)
         self.constitution = CharAttribute('constitution', constitution)
@@ -26,7 +26,7 @@ class HorizonsCharacter(Core.GenericCharacter):
 
         self.skills = []
         self.stuff = []
-
+        
     def set_attribute(self, attribute, value):
         """
         :type attribute: str
@@ -75,15 +75,89 @@ class HorizonsCharacter(Core.GenericCharacter):
     def restore_stamina(self):
         self.stamina_gauge.replenish()
 
-    def set_status(self, status):
+    def set_status_from_list(self, status):
         """
         :type status: CharStatus
         """
         if status in STATUS:
             self.status = status
         else:
-            raise HorizonsException("Status doesnt exist.")
-        
+            raise CharStatusException('Status isnt listed.')
+
+    def set_status_from_scratch(self, name, description, attribute_list, modificator_list):
+        """
+        :type name: str
+        :type description: str
+        :type attribute_list: list
+        :type modificator_list: list
+        """
+        self.status = CharStatus(name, description, attribute_list, modificator_list)
+
+    def add_skill(self, name, description, mastery, linked_attribute=None, is_special=False):
+        """
+        :type name: str
+        :type description: str
+        :type mastery: str
+        :type linked_attribute: CharAttribute
+        :type is_special: bool
+        """
+        self.skills.append(CharSkill(name, description, mastery, linked_attribute, is_special))
+
+    def get_skill_by_name(self, name):
+        """
+        :type name: str
+        """
+        for skill in self.skills:
+            if skill.name == name:
+                return skill
+        return None
+
+    def set_skill_mastery(self, skill_name, mastery):
+        """
+        :type skill_name: str
+        :type mastery: str
+        """
+        skill = self.get_skill_by_name(skill_name)
+        skill.set_mastery(mastery)
+
+    def delete_skill(self, skill_name):
+        """
+        :type skill_name: str
+        """
+        skill = self.get_skill_by_name(skill_name)
+        self.skills.remove(skill)
+
+    def add_item(self, name, description):
+        """
+        :type name: str
+        :type description: str
+        """
+        self.stuff.append(CharItem(name, description))
+
+    def get_item_by_name(self, item_name):
+        """
+        :type item_name: str
+        """
+        for item in self.stuff:
+            if item.name == item_name:
+                return item
+        return None
+
+    def edit_item(self, name, new_description):
+        """
+        :type name: str
+        :type new_description: str
+        """
+        item = self.get_item_by_name(name)
+        item.description = new_description
+
+    def delete_item(self, name):
+        """
+        :type name: str
+        """
+        item = self.get_item_by_name(name)
+        self.stuff.remove(item)
+
 
 class CharAttribute:
     def __init__(self, name, value):
@@ -146,7 +220,7 @@ class CharSkill:
         if mastery in mastery_list:
             self.mastery = mastery
         else:
-            self.mastery = 'Basic'      # TODO | Consider sending a signal #
+            raise HorizonsException("Skill mastery doesnt exist.")
 
     def get_test(self):
         if self.is_special:
@@ -196,17 +270,23 @@ STATUS = {'OK': CharStatus('OK', "", [], [])}
 
 # === EXCEPTIONS =======================================================================================================
 class HorizonsException(Exception):
-    def __init__(self):
-        self.message = 'HORIZONS Exception'
+    def __init__(self, string):
+        self.message = 'HORIZONS Exception: ' + str(string)
+
+
+class CharStatusException(HorizonsException):
+    def __init__(self, string):
+        self.message = 'HORIZONS Exception > Character status: ' + str(string)
 
 
 class CharSkillException(HorizonsException):
     def __init__(self, string):
-        self.message += ' > Character skill:' + str(string)
+        self.message = 'HORIZONS Exception > Character skill: ' + str(string)
+
 
 class CharAttributeException(HorizonsException):
     def __init__(self, string=''):
-        self.message += ' > Character Attribute:' + str(string)
+        self.message = 'HORIZONS Exception > Character Attribute: ' + str(string)
 
 
 # class CharAttributeLimitException(CharAttributeException):
