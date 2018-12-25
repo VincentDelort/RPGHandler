@@ -300,12 +300,12 @@ class CharAbility:
 
 
 # === GLOBAL FUNCTIONS =================================================================================================
-def get_ability_list():
-    pass    # TODO #
-
-
-def get_status_list():
-    pass    # TODO #
+# def get_ability_list():
+#     pass
+#
+#
+# def get_status_list():
+#     pass
 
 
 # === EXCEPTIONS =======================================================================================================

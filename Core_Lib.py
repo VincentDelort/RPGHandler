@@ -1,7 +1,7 @@
 
 
 # === CLASSES ==========================================================================================================
-class Terminal:
+class UserTerminal:
     def __init__(self):
         pass
 
@@ -9,7 +9,7 @@ class Terminal:
         pass
 
 
-class SaveFile:
+class FileHandler:
     def __init__(self):
         pass
 
