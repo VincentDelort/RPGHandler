@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 
 
 # === CLASSES ==========================================================================================================
-class Terminal:
+class UserTerminal:
     def __init__(self):
         pass
 
@@ -10,7 +9,7 @@ class Terminal:
         pass
 
 
-class SaveFile:
+class FileHandler:
     def __init__(self):
         pass
 
@@ -22,8 +21,9 @@ class SaveFile:
 
 
 class GenericCharacter:
-    def __init__(self, name):
+    def __init__(self, name, description):
         self.name = name
+        self.description = description
 
 
 # === GLOBAL FUNCTIONS =================================================================================================
